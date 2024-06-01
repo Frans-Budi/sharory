@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">StoryApp</string>
+    <string name="title_welcome_page">Selamat datang di Dicoding!</string>
+    <string name="message_welcome_page">Mau belajar Android, iOS, Machine Learning, Cloud, Front-End, Back-End, dan bidang IT lainnya? Di Dicoding aja!</string>
+    <string name="login">Masuk</string>
+    <string name="register">Daftar</string>
+    <string name="title_signup_page">Lengkapi data dirimu</string>
+    <string name="labelName">Nama</string>
+    <string name="labelEmail">Email</string>
+    <string name="labelPassword">Kata Sandi</string>
+    <string name="title_login_page">Sudah siap untuk upgrade skill?</string>
+    <string name="message_login_page">Masukkan dulu data dirimu ya</string>
+    <string name="empty_stories">Tidak ada Cerita</string>
+    <string name="add_story">Tambah Cerita</string>
+    <string name="camera">Kamera</string>
+    <string name="gallery">Galeri</string>
+    <string name="description">Deskripsi</string>
+    <string name="upload">Unggah</string>
+    <string name="detail_story">Detail Cerita</string>
+    <string name="logout">Keluar</string>
+    <string name="yes">Ya</string>
+    <string name="no">Tidak</string>
+    <string name="ask_for_logout">Apakah Anda yakin ingin keluar?</string>
+    <string name="failed">Gagal</string>
+    <string name="success">Berhasil</string>
+    <string name="next">Lanjut</string>
+    <string name="back">Kembali</string>
+    <string name="try_again">Coba lagi</string>
+    <string name="invalid_name">Nama harus lebih dari 3 huruf</string>
+    <string name="invalid_email">Format Email yang Anda masukkan salah</string>
+    <string name="invalid_password">Kata sandi harus lebih dari 8 huruf</string>
+    <string name="invalid_empty_image">Gambar tidak boleh kosong</string>
+</resources>
