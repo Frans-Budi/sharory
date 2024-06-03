@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -18,6 +20,7 @@ import com.fransbudikashira.storyapp.databinding.ActivityMainBinding
 import com.fransbudikashira.storyapp.ui.adapter.StoryItemAdapter
 import com.fransbudikashira.storyapp.ui.add_story.AddStoryActivity
 import com.fransbudikashira.storyapp.ui.factory.MainViewModelFactory
+import com.fransbudikashira.storyapp.ui.maps.MapsActivity
 import com.fransbudikashira.storyapp.ui.welcome.WelcomeActivity
 import com.jakewharton.threetenabp.AndroidThreeTen
 
@@ -39,6 +42,10 @@ class MainActivity : AppCompatActivity() {
         // Handle AppBar Menu Button -> Logout
         binding.toAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
+                R.id.maps -> {
+                    startActivity(Intent(this, MapsActivity::class.java))
+                    true
+                }
                 R.id.logout -> {
                     val builder = AlertDialog.Builder(this)
                     builder.setTitle(getString(R.string.logout))

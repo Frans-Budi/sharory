@@ -31,4 +31,7 @@
     <string name="invalid_password">Password must be more than 8 letters</string>
     <string name="invalid_empty_image">Image can not be empty</string>
     <string name="settings">Settings</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="map">map</string>
+    <string name="maps">Maps</string>
 </resources>

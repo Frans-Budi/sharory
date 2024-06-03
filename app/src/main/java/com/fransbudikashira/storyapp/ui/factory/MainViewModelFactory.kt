@@ -8,6 +8,7 @@ import com.fransbudikashira.storyapp.data.UserRepository
 import com.fransbudikashira.storyapp.di.Injection
 import com.fransbudikashira.storyapp.ui.add_story.AddStoryViewModel
 import com.fransbudikashira.storyapp.ui.main.MainViewModel
+import com.fransbudikashira.storyapp.ui.maps.MapsViewModel
 
 class MainViewModelFactory(
     private val storyRepository: StoryRepository,
@@ -23,6 +24,10 @@ class MainViewModelFactory(
 
             modelClass.isAssignableFrom(AddStoryViewModel::class.java) -> {
                 AddStoryViewModel(storyRepository) as T
+            }
+
+            modelClass.isAssignableFrom(MapsViewModel::class.java) -> {
+                MapsViewModel(storyRepository) as T
             }
 
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)

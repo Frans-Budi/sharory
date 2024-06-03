@@ -35,6 +35,24 @@ class StoryRepository(private val apiService: ApiService) {
         }
     }
 
+    fun getStoriesWithLocation(): LiveData<Result<StoriesResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.getStoriesWithLocation()
+            if (response.isSuccessful) {
+                emit(Result.Success(response.body()!!))
+            } else {
+                val errorBody = response.errorBody()?.string()
+                val errorResponse = Gson().fromJson(errorBody, LoginResponse::class.java)
+                Log.d(TAG, "getStories: $errorResponse")
+                emit(Result.Error(errorResponse.message))
+            }
+        } catch (e: Exception) {
+            Log.d(TAG, "userLogin: ${e.message}")
+            emit(Result.Error(e.message.toString()))
+        }
+    }
+
     fun addStory(
         imageFile: File,
         description: String

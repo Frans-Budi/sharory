@@ -6,6 +6,13 @@
         <item name="colorPrimaryVariant">@color/secondary</item>
         <item name="colorOnPrimary">@color/background</item>
         <item name="android:textColorPrimary">@color/textColor</item>
+        <!-- Customize your theme here. -->
+        <item name="actionOverflowButtonStyle">@style/CustomOverflowMenu</item>
+    </style>
+
+    <!-- Custom Overflow Menu Style -->
+    <style name="CustomOverflowMenu" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:src">@drawable/ic_dots_vertical</item>
     </style>
 
     <style name="Theme.StoryApp" parent="Base.Theme.StoryApp" />

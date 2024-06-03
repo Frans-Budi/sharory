@@ -31,4 +31,8 @@
     <string name="invalid_email">Format Email yang Anda masukkan salah</string>
     <string name="invalid_password">Kata sandi harus lebih dari 8 huruf</string>
     <string name="invalid_empty_image">Gambar tidak boleh kosong</string>
+    <string name="settings">Pengaturan</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="map">map</string>
+    <string name="maps">Maps</string>
 </resources>
