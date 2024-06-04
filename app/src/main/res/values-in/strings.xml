@@ -34,5 +34,6 @@
     <string name="settings">Pengaturan</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="map">map</string>
-    <string name="maps">Maps</string>
+    <string name="maps">Peta</string>
+    <string name="retry">Coba lagi</string>
 </resources>

@@ -3,7 +3,7 @@ package com.fransbudikashira.storyapp.ui.factory
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.fransbudikashira.storyapp.data.UserRepository
+import com.fransbudikashira.storyapp.data.repository.UserRepository
 import com.fransbudikashira.storyapp.di.Injection
 import com.fransbudikashira.storyapp.ui.login.LoginViewModel
 import com.fransbudikashira.storyapp.ui.register.RegisterViewModel

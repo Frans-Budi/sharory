@@ -1,9 +1,10 @@
-package com.fransbudikashira.storyapp.data
+package com.fransbudikashira.storyapp.data.repository
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.liveData
+import com.fransbudikashira.storyapp.data.Result
 import com.fransbudikashira.storyapp.data.local.data_store.TokenPreferences
 import com.fransbudikashira.storyapp.data.remote.response.LoginResponse
 import com.fransbudikashira.storyapp.data.remote.response.RegisterResponse

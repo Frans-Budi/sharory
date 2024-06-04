@@ -1,8 +1,14 @@
 package com.fransbudikashira.storyapp.ui.main
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.fransbudikashira.storyapp.data.StoryRepository
-import com.fransbudikashira.storyapp.data.UserRepository
+import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
+import com.fransbudikashira.storyapp.data.local.entity.StoryEntity
+import com.fransbudikashira.storyapp.data.remote.response.ListStoryItem
+import com.fransbudikashira.storyapp.data.repository.StoryRepository
+import com.fransbudikashira.storyapp.data.repository.UserRepository
 
 class MainViewModel(
     private val storyRepository: StoryRepository,
@@ -11,5 +17,6 @@ class MainViewModel(
 
     fun deleteToken() = userRepository.deleteToken()
 
-    fun getStories() = storyRepository.getStories()
+    val stories: LiveData<PagingData<StoryEntity>> =
+        storyRepository.getStories().cachedIn(viewModelScope)
 }

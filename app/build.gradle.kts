@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    //activate KSP plugin
+    id("com.google.devtools.ksp")
     // Activate Parcelize Feature
     id("kotlin-parcelize")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
@@ -41,6 +43,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+        freeCompilerArgs += listOf("-Xopt-in=kotlin.RequiresOptIn")
     }
 }
 
@@ -65,10 +68,24 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0")
+    // Room
+    implementation("androidx.room:room-ktx:2.6.1")
+    implementation("androidx.room:room-paging:2.6.0-rc01")
+    ksp("androidx.room:room-compiler:2.6.1")
     // Fragment-KTX
     implementation("androidx.fragment:fragment-ktx:1.7.1")
     // Convert DateTime
     implementation("com.jakewharton.threetenabp:threetenabp:1.3.1")
     //maps
     implementation("com.google.android.gms:play-services-maps:18.2.0")
+    //paging
+    implementation("androidx.paging:paging-runtime-ktx:3.3.0")
+    //testing
+    androidTestImplementation("androidx.arch.core:core-testing:2.2.0") //InstantTaskExecutorRule
+    androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.0") //TestDispatcher
+    testImplementation("androidx.arch.core:core-testing:2.2.0") //InstantTaskExecutorRule
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.0") //TestDispatcher
+    //mockito - - -
+    testImplementation("org.mockito:mockito-core:5.6.0")
+    testImplementation("org.mockito:mockito-inline:5.2.0")
 }

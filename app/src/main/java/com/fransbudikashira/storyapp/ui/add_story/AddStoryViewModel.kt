@@ -1,7 +1,7 @@
 package com.fransbudikashira.storyapp.ui.add_story
 
 import androidx.lifecycle.ViewModel
-import com.fransbudikashira.storyapp.data.StoryRepository
+import com.fransbudikashira.storyapp.data.repository.StoryRepository
 import java.io.File
 
 class AddStoryViewModel(private val storyRepository: StoryRepository): ViewModel() {

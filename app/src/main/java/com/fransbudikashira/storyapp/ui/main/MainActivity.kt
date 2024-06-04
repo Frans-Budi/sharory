@@ -5,18 +5,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fransbudikashira.storyapp.R
-import com.fransbudikashira.storyapp.data.Result
-import com.fransbudikashira.storyapp.data.remote.response.ListStoryItem
 import com.fransbudikashira.storyapp.databinding.ActivityMainBinding
+import com.fransbudikashira.storyapp.ui.adapter.LoadingStateAdapter
 import com.fransbudikashira.storyapp.ui.adapter.StoryItemAdapter
 import com.fransbudikashira.storyapp.ui.add_story.AddStoryActivity
 import com.fransbudikashira.storyapp.ui.factory.MainViewModelFactory
@@ -26,18 +21,18 @@ import com.jakewharton.threetenabp.AndroidThreeTen
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Initialize the factory with application context in onCreate
+        viewModel = obtainViewModel(this@MainActivity)
+
         // Initial for convert date
         AndroidThreeTen.init(this)
-
-        // Initial for Factory and ViewModel
-        val factory: MainViewModelFactory = MainViewModelFactory.getInstance(this)
-        val viewModel: MainViewModel by viewModels { factory }
 
         // Handle AppBar Menu Button -> Logout
         binding.toAppBar.setOnMenuItemClickListener { menuItem ->
@@ -83,37 +78,22 @@ class MainActivity : AppCompatActivity() {
         val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
         binding.rvStory.addItemDecoration(itemDecoration)
 
-        viewModel.getStories().observe(this) { result ->
-            if (result != null) {
-                when (result) {
-                    is Result.Loading -> {
-                        binding.linearProgress.visibility = View.VISIBLE
-                    }
-                    is Result.Success -> {
-                        binding.linearProgress.visibility = View.GONE
-                        val stories = result.data.listStory
-                        if (!stories.isNullOrEmpty()) {
-                            binding.statusText.text = ""
-                            setStoryItemData(result.data.listStory)
-                        } else {
-                            binding.statusText.text = getString(R.string.empty_stories)
-                        }
-                    }
-                    is Result.Error -> {
-                        binding.linearProgress.visibility = View.GONE
-                        binding.statusText.text = getString(R.string.empty_stories)
-                        Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()
-                        Log.d("MainActivity", "onCreate: ${result.error}")
-                    }
-                }
-            }
-        }
-
+        setStoryItemData()
     }
 
-    private fun setStoryItemData(listStoryItems: List<ListStoryItem?>) {
+    private fun setStoryItemData() {
         val adapter = StoryItemAdapter()
-        adapter.submitList(listStoryItems)
         binding.rvStory.adapter = adapter
+        binding.rvStory.adapter = adapter.withLoadStateFooter(
+            footer = LoadingStateAdapter { adapter.retry() }
+        )
+        viewModel.stories.observe(this) {
+            adapter.submitData(lifecycle, it)
+        }
+    }
+
+    private fun obtainViewModel(activity: AppCompatActivity): MainViewModel {
+        val factory = MainViewModelFactory.getInstance(activity.application)
+        return ViewModelProvider(activity, factory)[MainViewModel::class.java]
     }
 }

@@ -3,7 +3,7 @@ package com.fransbudikashira.storyapp.ui.login
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.fransbudikashira.storyapp.data.UserRepository
+import com.fransbudikashira.storyapp.data.repository.UserRepository
 import com.fransbudikashira.storyapp.utils.Event
 
 class LoginViewModel(private val storyRepository: UserRepository): ViewModel() {

@@ -2,9 +2,7 @@ package com.fransbudikashira.storyapp.ui.detail_story
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.bumptech.glide.Glide
-import com.fransbudikashira.storyapp.R
-import com.fransbudikashira.storyapp.data.remote.response.ListStoryItem
+import com.fransbudikashira.storyapp.data.local.entity.StoryEntity
 import com.fransbudikashira.storyapp.databinding.ActivityDetailStoryBinding
 import com.fransbudikashira.storyapp.utils.loadImage
 import com.fransbudikashira.storyapp.utils.withDateFormat
@@ -22,11 +20,11 @@ class DetailStoryActivity : AppCompatActivity() {
             finish()
         }
 
-        val storyItem: ListStoryItem? = intent.getParcelableExtra(EXTRA_STORY)
+        val storyItem: StoryEntity? = intent.getParcelableExtra(EXTRA_STORY)
         setUpView(storyItem)
     }
 
-    private fun setUpView(storyItem: ListStoryItem?) {
+    private fun setUpView(storyItem: StoryEntity?) {
         with(binding) {
             titleText.text = storyItem?.name ?: ""
             timeText.text = storyItem?.createdAt?.withDateFormat() ?: ""

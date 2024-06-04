@@ -3,7 +3,7 @@ package com.fransbudikashira.storyapp.ui.register
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.fransbudikashira.storyapp.data.UserRepository
+import com.fransbudikashira.storyapp.data.repository.UserRepository
 import com.fransbudikashira.storyapp.utils.Event
 
 class RegisterViewModel(private val userRepository: UserRepository): ViewModel() {
