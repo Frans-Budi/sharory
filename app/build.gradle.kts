@@ -45,6 +45,9 @@ android {
         jvmTarget = "1.8"
         freeCompilerArgs += listOf("-Xopt-in=kotlin.RequiresOptIn")
     }
+    testOptions {
+        unitTests.isReturnDefaultValues = true
+    }
 }
 
 dependencies {
